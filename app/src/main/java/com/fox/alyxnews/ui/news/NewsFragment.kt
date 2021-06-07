@@ -16,15 +16,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.fox.alyxnews.App
 import com.fox.alyxnews.R
 import com.fox.alyxnews.models.Article
 import com.fox.alyxnews.ui.news.newsPage.PageFragment
 import com.fox.alyxnews.util.TopSpacingDecoration
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_news.*
-import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.coroutines.*
 
 class NewsFragment : Fragment(),

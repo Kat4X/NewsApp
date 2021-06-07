@@ -18,9 +18,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.fox.alyxnews.R
 import com.fox.alyxnews.util.makeSnackbar
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController

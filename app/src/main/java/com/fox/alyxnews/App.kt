@@ -1,13 +1,16 @@
 package com.fox.alyxnews
 
-import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.multidex.MultiDexApplication
+import timber.log.Timber
 
-class App: Application() {
+class App: MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
+
+        Timber.plant(Timber.DebugTree())
 
         sp = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
     }
