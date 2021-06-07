@@ -7,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.fox.alyxnews.R
-import com.fox.alyxnews.models.Article
-import com.fox.alyxnews.models.News.*
-import kotlinx.android.synthetic.main.news_item.view.*
+import com.fox.alyxnews.data.responces.Article
+import com.fox.alyxnews.data.responces.News.*
 
 class NewsListAdapter(private val interaction: Interaction? = null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

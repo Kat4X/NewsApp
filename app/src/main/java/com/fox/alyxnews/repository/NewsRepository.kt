@@ -1,7 +1,7 @@
 package com.fox.alyxnews.repository
 
 import com.fox.alyxnews.api.NewsApi
-import com.fox.alyxnews.models.Article
+import com.fox.alyxnews.data.responces.Article
 import kotlinx.coroutines.CompletableJob
 
 class NewsRepository(private val apiInterface: NewsApi) : BaseRepository() {

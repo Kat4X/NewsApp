@@ -24,4 +24,9 @@
         <item name="cornerSize">16dp</item>
     </style>
 
+    <style name="shape_circle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>

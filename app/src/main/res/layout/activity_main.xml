@@ -39,25 +39,21 @@
                     android:id="@+id/spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
                     android:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"
+                    android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <com.mikhaellopez.circularimageview.CircularImageView
-                    android:id="@+id/settings_button"
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    android:layout_marginEnd="20dp"
-                    android:elevation="0dp"
-                    android:padding="0dp"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/btnSettings"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:src="@drawable/cat"
-                    app:civ_border_width="0dp"
-                    app:civ_shadow="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/shape_circle" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.appbar.MaterialToolbar>

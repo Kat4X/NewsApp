@@ -1,8 +1,7 @@
 package com.fox.alyxnews.repository
 
 import android.util.Log
-import com.fox.alyxnews.models.Output
-import kotlinx.coroutines.delay
+import com.fox.alyxnews.data.responces.Output
 import retrofit2.Response
 import java.io.IOException
 
@@ -32,5 +31,3 @@ open class BaseRepository {
             Output.Error(IOException("OOps .. Something went wrong due to  $error"))
     }
 }
-
-//response.message

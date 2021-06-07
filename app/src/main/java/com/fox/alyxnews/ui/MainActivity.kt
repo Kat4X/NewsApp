@@ -1,8 +1,5 @@
 package com.fox.alyxnews.ui
 
-import android.annotation.TargetApi
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -16,18 +13,21 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.fox.alyxnews.R
+import com.fox.alyxnews.databinding.ActivityMainBinding
 import com.fox.alyxnews.util.makeSnackbar
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Nav Host Fragment
         val host: NavHostFragment = supportFragmentManager
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         // Toolbar
         appBarConfiguration = AppBarConfiguration(
             navController.graph,
-            drawerLayout = drawer_layout
+            drawerLayout = binding.drawerLayout
         )
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
@@ -68,14 +68,14 @@ class MainActivity : AppCompatActivity() {
                 super.onOptionsItemSelected(item)
     }
 
-    private fun initUi() {
-        settings_button.setOnClickListener {
+    private fun initUi() = binding.apply {
+        btnSettings.setOnClickListener {
             navController.navigate(R.id.settingsFragment)
         }
 
         val newsSpinner = arrayOf("Технологий", "Биткойн", "Бизнес")
         val adapterSpinner = ArrayAdapter(
-            this,
+            this@MainActivity,
             R.layout.simple_spinner_item_custom,
             newsSpinner
         )
@@ -85,11 +85,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showProgressBar(isVisible: Boolean) {
-        if (isVisible) progress_bar.visibility = View.VISIBLE
-        else progress_bar.visibility = View.INVISIBLE
-    }
-
-    companion object {
-        private val TAG = MainActivity::class.java.simpleName
+        if (isVisible) binding.progressBar.visibility = View.VISIBLE
+        else binding.progressBar.visibility = View.INVISIBLE
     }
 }

@@ -1,33 +1,21 @@
-package com.fox.alyxnews.models
+package com.fox.alyxnews.data.responces
 
 
-import com.google.gson.annotations.SerializedName
 
 data class News(
-    @SerializedName("status")
     var status: String,
-    @SerializedName("totalResults")
     var totalResults: Int,
-    @SerializedName("articles")
     var articles: List<Article>
 )
 
 data class Article(
-    @SerializedName("source")
     var source: Source?,
-    @SerializedName("author")
     var author: String,
-    @SerializedName("title")
     var title: String,
-    @SerializedName("description")
     var description: String,
-    @SerializedName("url")
     var url: String?,
-    @SerializedName("urlToImage")
     var urlToImage: String?,
-    @SerializedName("publishedAt")
     var publishedAt: String,
-    @SerializedName("content")
     var content: String?
 ) {
     override fun toString(): String {
@@ -39,8 +27,6 @@ data class Article(
 }
 
 data class Source(
-    @SerializedName("id")
     var id: Any?,
-    @SerializedName("name")
     var name: String?
 )

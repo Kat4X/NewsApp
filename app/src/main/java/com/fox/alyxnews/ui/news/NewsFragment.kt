@@ -1,15 +1,11 @@
 package com.fox.alyxnews.ui.news
 
 
-import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
-import android.widget.ArrayAdapter
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,13 +14,16 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fox.alyxnews.App
 import com.fox.alyxnews.R
-import com.fox.alyxnews.models.Article
-import com.fox.alyxnews.ui.news.newsPage.PageFragment
+import com.fox.alyxnews.data.responces.Article
+import com.fox.alyxnews.databinding.FragmentNewsBinding
 import com.fox.alyxnews.util.TopSpacingDecoration
+import com.fox.alyxnews.util.ViewBindingHolder
+import com.fox.alyxnews.util.ViewBindingHolderImpl
 import kotlinx.coroutines.*
 
 class NewsFragment : Fragment(),
-    NewsListAdapter.Interaction {
+    NewsListAdapter.Interaction,
+    ViewBindingHolder<FragmentNewsBinding> by ViewBindingHolderImpl() {
 
     lateinit var viewModel: NewsViewModel
     lateinit var viewModelFactory: NewsViewModelFactory
@@ -47,11 +46,6 @@ class NewsFragment : Fragment(),
 
         navController = Navigation.findNavController(view)
         initViewModel()
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
         initUi()
         initRecyclerView()
     }
@@ -72,10 +66,10 @@ class NewsFragment : Fragment(),
         })
 
         viewModel.isRefreshing.observe(viewLifecycleOwner, Observer {
-            if (it == false){
+            if (it == false) {
                 CoroutineScope(Dispatchers.IO).launch {
                     withContext(Dispatchers.Main) {
-                        swipe_r_l.isRefreshing = false
+                        requireBinding().swipeRL.isRefreshing = false
                     }
                 }
             }
@@ -88,7 +82,7 @@ class NewsFragment : Fragment(),
 
     private fun initSwipeRefreshLayout() {
 
-        swipe_r_l.setOnRefreshListener {
+        requireBinding().swipeRL.setOnRefreshListener {
             viewModel.getNews("technology", "ru")
             viewModel.isRefreshing.value = true
 //            CoroutineScope(Dispatchers.IO).launch {
@@ -109,7 +103,7 @@ class NewsFragment : Fragment(),
     }
 
     private fun initRecyclerView() {
-        news_recycler_view.apply {
+        requireBinding().newsRecyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
             val topSpacingDecoration = TopSpacingDecoration(30)
             addItemDecoration(topSpacingDecoration)
@@ -117,10 +111,4 @@ class NewsFragment : Fragment(),
             adapter = newsListAdapter
         }
     }
-
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        viewModel.cancelJobs()
-//    }
-
 }
