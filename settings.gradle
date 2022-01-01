@@ -1,2 +1,4 @@
 include ':app'
 rootProject.name='AlyxNews'
+include ':sources:core_ui'
+include ':sources:core_api'
